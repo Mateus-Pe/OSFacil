@@ -55,14 +55,8 @@
     <!-- Sidebar -->
     <aside class="fixed left-0 top-0 h-full w-64 bg-white border-r border-slate-200 shadow-sm">
         <!-- Logo -->
-        <div class="p-6 border-b border-slate-100">
-            <div class="flex items-center space-x-3">
-                <img src="{{ assets('img/OSFacil-logo-nobg.png') }}" alt="OSFacil" class="w-10 h-10 object-contain">
-                <div>
-                    <h1 class="text-lg font-semibold text-slate-800">OSFacil</h1>
-                    <p class="text-xs text-slate-500">Sistema de OS</p>
-                </div>
-            </div>
+        <div class="py-3 px-6 border-b border-slate-100 flex justify-center overflow-visible">
+            <img src="{{ assets('img/OSFacil-logo-nobg.png') }}" alt="OSFacil" class="w-20 h-20 object-contain transform scale-[2]">
         </div>
         
         <!-- Navigation -->
