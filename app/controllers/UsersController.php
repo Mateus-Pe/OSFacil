@@ -11,7 +11,35 @@ class UsersController extends Controller
 {
     public function index()
     {
-        response()->render('menu');
+        // Buscar estatísticas para o dashboard
+        $clienteModel = new Cliente();
+        $vendedorModel = new Vendedor();
+        $ordemModel = new Ordem();
+        
+        // Contar totais
+        $totalClientes = count($clienteModel->listar());
+        $totalVendedores = count($vendedorModel->listar());
+        $todasOS = $ordemModel->listar();
+        $totalOS = count($todasOS);
+        
+        // Contar OS pendentes (status diferente de "Concluído")
+        $osPendentes = 0;
+        foreach ($todasOS as $os) {
+            if (isset($os['status']) && $os['status'] !== 'Concluído') {
+                $osPendentes++;
+            }
+        }
+        
+        // Pegar as 5 OS mais recentes
+        $recentOS = array_slice($todasOS, 0, 5);
+        
+        response()->render('menu', [
+            'totalClientes' => $totalClientes,
+            'totalVendedores' => $totalVendedores,
+            'totalOS' => $totalOS,
+            'osPendentes' => $osPendentes,
+            'recentOS' => $recentOS
+        ]);
     }
 
     public function cliente(){
@@ -35,9 +63,7 @@ class UsersController extends Controller
             'observacoes' => $observacoes
         ]);
 
-        response()->render('menu', [
-            'mensagem' => 'Cliente salvo com sucesso!'
-        ]);
+        response()->redirect('/');
     }
 
     public function Clientelistar()
@@ -76,9 +102,7 @@ class UsersController extends Controller
             'observacoes' => $observacoes
         ]);
 
-        response()->render('menu', [
-            'mensagem' => 'Vendedor cadastrado com sucesso!'
-        ]);
+        response()->redirect('/');
     }
 
     public function Vendedorlistar(){
@@ -133,9 +157,7 @@ class UsersController extends Controller
             'data_saida' => $data_saida
         ]);
 
-        response()->render('menu', [
-            'mensagem' => 'Ordem de Serviço salva com sucesso!'
-        ]);
+        response()->redirect('/');
     }
 
 
