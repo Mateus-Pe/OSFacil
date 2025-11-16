@@ -4,7 +4,6 @@ namespace App\Controllers;
 use App\Models\Cliente;
 use App\Models\Ordem;
 use App\Models\Vendedor;
-use App\Models\Produto;
 use Leaf\Controller;
 
 class UsersController extends Controller

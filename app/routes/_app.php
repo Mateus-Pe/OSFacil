@@ -13,8 +13,6 @@ app()->post('/vendedor/salvar', "UsersController@Vendedorsalvar");
 app()->get('/vendedor/listar', "UsersController@Vendedorlistar");
 app()->post('/vendedor/deletar/{id}', "UsersController@Vendedordeletar");
 
-app()->get('/produto', "UsersController@produto");
-
 app()->get('/os', "UsersController@os");
 app()->post('/os/salvar', "UsersController@Ossalvar");
 app()->get('/os/listar', "UsersController@Oslistar");
